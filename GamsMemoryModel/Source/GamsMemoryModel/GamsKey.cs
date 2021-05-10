@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,6 +15,7 @@ namespace GamsMemoryModel
         /// Create a new gams key.
         /// </summary>
         /// <param name="keys">A collection of keys.</param>
+        [JsonConstructor]
         public GamsKey(IEnumerable<string> keys)
         {
             Keys = keys.ToArray();

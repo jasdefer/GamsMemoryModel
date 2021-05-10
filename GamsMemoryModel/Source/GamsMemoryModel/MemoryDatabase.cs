@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GamsMemoryModel.Json;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace GamsMemoryModel
@@ -45,5 +47,34 @@ namespace GamsMemoryModel
         /// The variables in this database.
         /// </summary>
         public IReadOnlyCollection<MemoryVariable> Variables { get; }
+
+        /// <summary>
+        /// Converts this <see cref="MemoryDatabase"/> to a json string.
+        /// </summary>
+        /// <returns>Returns a json string representing this database.</returns>
+        public string ToJson()
+        {
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.ContractResolver = new DictionaryResolver<GamsKey,double>();
+            var json = JsonConvert.SerializeObject(this, settings);
+            return json;
+        }
+
+        /// <summary>
+        /// Convert a give json string to a <see cref="MemoryDatabase"/>.
+        /// </summary>
+        /// <param name="json">The json string containing the information.</param>
+        /// <returns>Returns a new <see cref="MemoryDatabase"/> instance.</returns>
+        public static MemoryDatabase FromJson(string json)
+        {
+            if (string.IsNullOrEmpty(json))
+            {
+                throw new ArgumentNullException(nameof(json));
+            }
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.ContractResolver = new DictionaryResolver<GamsKey, double>();
+            var memoryDatabase = JsonConvert.DeserializeObject<MemoryDatabase>(json, settings);
+            return memoryDatabase;
+        }
     }
 }

@@ -3,12 +3,20 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Justus Bonz</Authors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <PackageProjectUrl>https://github.com/jasdefer/GamsMemoryModel</PackageProjectUrl>
-    <Description />
+    <Description>Contains a .net core 3.1 library with</Description>
     <AssemblyVersion>0.1.0.0</AssemblyVersion>
     <Version>0.1.0</Version>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageTags>GAMS;Model;Operations-Research</PackageTags>
+    <PackageReleaseNotes>0.1.0
+- Initial release</PackageReleaseNotes>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
 
 </Project>
