@@ -1,0 +1,28 @@
+name: publish to nuget
+on:
+  push:
+    branches:
+      - master # Default release branch
+jobs:
+  publish:
+    name: build, pack & publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+      - name: Restore and Build
+        run: |
+          dotnet restore GamsMemoryModel/Source/GamsMemoryModel/GamsMemoryModel.csproj
+          dotnet build --configuration Release GamsMemoryModel/Source/GamsMemoryModel/GamsMemoryModel.csproj
+      - name: Test the project
+        run: dotnet test GamsMemoryModel/Test/GamsMemoryModelTest/GamsMemoryModelTest.csproj
+      - name: publish to nuget
+        env: 
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+        run: |
+          dotnet pack --configuration Release GamsMemoryModel/Source/GamsMemoryModel/GamsMemoryModel.csproj --output Nuget
+          dotnet nuget push "Nuget/**.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${NUGET_KEY}
