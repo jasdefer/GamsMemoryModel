@@ -64,17 +64,17 @@ namespace GamsMemoryModelTest
 
             var parameters = new MemoryParameter[]
             {
-                //parameterA,
-                //parameterB,
-                //parameterC,
+                parameterA,
+                parameterB,
+                parameterC,
                 parameterD,
-                //parameterF,
+                parameterF,
             };
 
             var variables = new MemoryVariable[]
             {
-                //variableX,
-                //variableZ
+                variableX,
+                variableZ
             };
             var memoryDatabase = new MemoryDatabase("transport", sets, parameters, variables);
             return memoryDatabase;

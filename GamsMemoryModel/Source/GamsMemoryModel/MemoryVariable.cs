@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GamsMemoryModel
 {
@@ -9,8 +11,21 @@ namespace GamsMemoryModel
     /// </summary>
     public class MemoryVariable
     {
-        private readonly Dictionary<GamsKey, VariableValues> records;
+        private Dictionary<GamsKey, VariableValues> records;
 
+        #region JsonHelper
+        /// <summary>
+        /// This property is needed to convert the records to a valid json string.
+        /// The keys of dictionaries are written as strings (not json formatted).
+        /// This construct replaces the dictionary with a collection of key value pairs, which can be serialized without problems.
+        /// </summary>
+        [JsonProperty]
+        private IReadOnlyCollection<KeyValuePair<GamsKey, VariableValues>> SerializedRecords
+        {
+            get { return records.ToList(); }
+            set { records = value.ToDictionary(x => x.Key, x => x.Value); }
+        }
+        #endregion
 
         /// <summary>
         /// Create a new <see cref="MemoryVariable"/>.
@@ -56,6 +71,7 @@ namespace GamsMemoryModel
         /// <summary>
         /// The collection of records identifiable by the <see cref="GamsKey"/>.
         /// </summary>
+        [JsonIgnore]
         public IReadOnlyDictionary<GamsKey, VariableValues> Records => records;
 
         /// <summary>

@@ -15,6 +15,7 @@ namespace GamsMemoryModelTest
             var json = transport.ToJson();
             File.WriteAllText("database.json", json);
             var transportDeserialized = MemoryDatabase.FromJson(json);
+            var json2 = transportDeserialized.ToJson();
 
             Assert.IsNotNull(transportDeserialized);
             Assert.AreEqual(transport.Sets.Count, transportDeserialized.Sets.Count);
@@ -61,6 +62,8 @@ namespace GamsMemoryModelTest
                     Assert.AreEqual(record.Value.Marginal, variableDeserialized.Records[record.Key].Marginal);
                 }
             }
+
+            Assert.AreEqual(json, json2);
         }
     }
 }

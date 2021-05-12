@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GamsMemoryModel
 {
@@ -9,7 +11,20 @@ namespace GamsMemoryModel
     /// </summary>
     public class MemorySet
     {
-        private readonly HashSet<GamsKey> elements;
+        private HashSet<GamsKey> elements;
+
+        #region JsonHelper
+        /// <summary>
+        /// This property is needed to convert the elements to a valid json string.
+        /// Hashsets cannot be serialized with complex types.
+        /// </summary>
+        [JsonProperty]
+        private IReadOnlyCollection<GamsKey> SerializedElements
+        {
+            get { return elements.ToArray(); }
+            set { elements = new HashSet<GamsKey>(value); }
+        }
+        #endregion
 
         /// <summary>
         /// Create a new memory set.
@@ -48,6 +63,7 @@ namespace GamsMemoryModel
         /// <summary>
         /// The collection of elements of this set.
         /// </summary>
+        [JsonIgnore]
         public IReadOnlyCollection<GamsKey> Elements => elements;
 
         /// <summary>
