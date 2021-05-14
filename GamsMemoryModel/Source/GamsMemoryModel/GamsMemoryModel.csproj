@@ -6,7 +6,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <PackageProjectUrl>https://github.com/jasdefer/GamsMemoryModel</PackageProjectUrl>
-    <Description>Contains a .net core 3.1 library with</Description>
+    <Description>Contains a .net core 3.1 library with a model representing a GAMS database without a reference to the GAMS api. This memory gams model can be serialized to and deserialized from a json string. It includes sets, parameters and variables. Equations are not represented. The purpose of this library is to build the gams database without a reference to gams.</Description>
     <AssemblyVersion>0.1.0.0</AssemblyVersion>
     <Version>0.1.0</Version>
     <NeutralLanguage>en</NeutralLanguage>
