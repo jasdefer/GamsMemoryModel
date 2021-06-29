@@ -72,7 +72,7 @@ namespace GamsMemoryModel
         /// </summary>
         /// <param name="gamsKey">The <see cref="GamsKey"/> uniquely identifying this record.</param>
         /// <param name="value">The value of the record.</param>
-        public void AddRecord(GamsKey gamsKey, double value = 0)
+        public void AddRecord(double value, GamsKey gamsKey)
         {
             if (gamsKey is null)
             {
@@ -91,7 +91,7 @@ namespace GamsMemoryModel
         /// </summary>
         /// <param name="key">The key of this record.</param>
         /// <param name="value">The value of this record.</param>
-        public void AddRecord(string key, double value)
+        public void AddRecord(double value, string key)
         {
             if (key is null)
             {
@@ -104,7 +104,23 @@ namespace GamsMemoryModel
             }
 
             var gamsKey = new GamsKey(key);
-            AddRecord(gamsKey, value);
+            AddRecord(value, gamsKey);
+        }
+
+        /// <summary>
+        /// Add a new record to this parameter.
+        /// </summary>
+        /// <param name="value">The value of the record.</param>
+        /// <param name="keys">The keys for this record.</param>
+        public void AddRecord(double value, params string[] keys)
+        {
+            if (keys.Length != Dimension)
+            {
+                throw new ArgumentException($"Cannot add a record with a dimension of {keys.Length} to a parameter with a dimension of {Dimension}.", nameof(keys));
+            }
+
+            var gamsKey = new GamsKey(keys);
+            AddRecord(value, gamsKey);
         }
     }
 }
