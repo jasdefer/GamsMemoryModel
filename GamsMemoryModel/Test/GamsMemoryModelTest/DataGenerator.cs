@@ -17,29 +17,29 @@ namespace GamsMemoryModelTest
             setJ.AddElement("topeka");
 
             var parameterA = new MemoryParameter("a", 1, "capacity of plant i in cases");
-            parameterA.AddRecord("seattle", 350);
-            parameterA.AddRecord("san-diego", 600);
+            parameterA.AddRecord(350, "seattle");
+            parameterA.AddRecord(600, "san-diego");
 
             var parameterB = new MemoryParameter("b", 1, "demand at market j in cases");
-            parameterB.AddRecord("new-york", 325);
-            parameterB.AddRecord("chicago", 300);
-            parameterB.AddRecord("topeka", 275);
+            parameterB.AddRecord(325, "new-york");
+            parameterB.AddRecord(300, "chicago");
+            parameterB.AddRecord(275, "topeka");
 
             var parameterD = new MemoryParameter("d", 2, "distance in thousands of miles");
-            parameterD.AddRecord(new GamsKey("seattle", "new-york"), 2.5);
-            parameterD.AddRecord(new GamsKey("seattle", "chicago"), 1.7);
-            parameterD.AddRecord(new GamsKey("seattle", "topeka"), 1.8);
-            parameterD.AddRecord(new GamsKey("san-diego", "new-york"), 2.5);
-            parameterD.AddRecord(new GamsKey("san-diego", "chicago"), 1.8);
-            parameterD.AddRecord(new GamsKey("san-diego", "topeka"), 1.4);
+            parameterD.AddRecord(2.5, new GamsKey("seattle", "new-york"));
+            parameterD.AddRecord(1.7, new GamsKey("seattle", "chicago"));
+            parameterD.AddRecord(1.8, new GamsKey("seattle", "topeka"));
+            parameterD.AddRecord(2.5, new GamsKey("san-diego", "new-york"));
+            parameterD.AddRecord(1.8, new GamsKey("san-diego", "chicago"));
+            parameterD.AddRecord(1.4, new GamsKey("san-diego", "topeka"));
 
             var parameterF = new MemoryParameter("f", 0, "freight in dollars per case per thousand miles");
-            parameterF.AddRecord(new GamsKey(), 90);
+            parameterF.AddRecord(90, new GamsKey());
 
             var parameterC = new MemoryParameter("c", 2, "transport cost in thousands of dollars per case");
             foreach (var distance in parameterD.Records)
             {
-                parameterC.AddRecord(distance.Key, distance.Value * parameterF.Records[new GamsKey()]);
+                parameterC.AddRecord(distance.Value * parameterF.Records[new GamsKey()], distance.Key);
             }
 
             var variableX = new MemoryVariable("x", 2, MemoryVariableTypes.Positive, "shipment quantities in cases");

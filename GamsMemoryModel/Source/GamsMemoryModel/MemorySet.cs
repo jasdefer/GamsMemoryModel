@@ -99,5 +99,21 @@ namespace GamsMemoryModel
             var gamsKey = new GamsKey(element);
             AddElement(gamsKey);
         }
+
+        /// <summary>
+        /// Add an element to this set.
+        /// Duplicate entries are beeing ignored.
+        /// </summary>
+        /// <param name="keys">The set of keys that create this element.</param>
+        public void AddElement(params string[] keys)
+        {
+            if (keys.Length != Dimension)
+            {
+                throw new ArgumentException($"Cannot add a record with a dimension of {keys.Length} to a set with a dimension of {Dimension}.", nameof(keys));
+            }
+
+            var gamsKey = new GamsKey(keys);
+            AddElement(gamsKey);
+        }
     }
 }

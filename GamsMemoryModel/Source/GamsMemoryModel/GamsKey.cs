@@ -38,6 +38,7 @@ namespace GamsMemoryModel
         /// <summary>
         /// The dimension of the keys.
         /// </summary>
+        [JsonIgnore]
         public int Length => Keys.Count;
 
         /// <summary>

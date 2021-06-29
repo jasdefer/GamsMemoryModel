@@ -31,5 +31,14 @@ namespace GamsHelperTest.Model
             var gamsKey = new GamsKey("i1", "j2");
             Assert.ThrowsException<ArgumentException>(() => set.AddElement(gamsKey));
         }
+
+        [TestMethod]
+        public void AddParams()
+        {
+            var set = new MemorySet("IJ", 2);
+            set.AddElement("i1", "j1");
+            set.AddElement("i1", "j1");
+            Assert.AreEqual(1, set.Elements.Count);
+        }
     }
 }
