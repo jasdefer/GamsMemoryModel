@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace GamsMemoryModel
@@ -114,6 +115,25 @@ namespace GamsMemoryModel
 
             var gamsKey = new GamsKey(keys);
             AddElement(gamsKey);
+        }
+
+        /// <summary>
+        /// Create a one-dimensional set with elements named {identifier}01, {identifier}02, ..., {identifier}<paramref name="numberOfElements"/>.
+        /// </summary>
+        /// <param name="identifier">The name of the set.</param>
+        /// <param name="description">The explanatory text of the set.</param>
+        /// <param name="numberOfElements">The number of elements in the one-dimensional set.</param>
+        /// <returns>Returns a new <see cref="MemorySet"/>.</returns>
+        public static MemorySet CreateByEnumeration(string identifier, int numberOfElements, string description = "")
+        {
+            var set = new MemorySet(identifier, 1, description);
+            var numberOfDigits = Math.Floor(Math.Log10(numberOfElements) + 1);
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                var key = "i"+(i + 1).ToString($"D{numberOfDigits}", CultureInfo.InvariantCulture);
+                set.AddElement(key);
+            }
+            return set;
         }
     }
 }
