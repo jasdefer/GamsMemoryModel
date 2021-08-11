@@ -130,7 +130,7 @@ namespace GamsMemoryModel
             var numberOfDigits = Math.Floor(Math.Log10(numberOfElements) + 1);
             for (int i = 0; i < numberOfElements; i++)
             {
-                var key = "i"+(i + 1).ToString($"D{numberOfDigits}", CultureInfo.InvariantCulture);
+                var key = identifier + (i + 1).ToString($"D{numberOfDigits}", CultureInfo.InvariantCulture);
                 set.AddElement(key);
             }
             return set;
