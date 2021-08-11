@@ -1,6 +1,7 @@
 ﻿using GamsMemoryModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Linq;
 
 namespace GamsHelperTest.Model
 {
@@ -39,6 +40,39 @@ namespace GamsHelperTest.Model
             set.AddElement("i1", "j1");
             set.AddElement("i1", "j1");
             Assert.AreEqual(1, set.Elements.Count);
+        }
+
+        [TestMethod]
+        public void CreateByEnumeration1()
+        {
+            var set = MemorySet.CreateByEnumeration("i", 3);
+            Assert.IsNotNull(set);
+            Assert.AreEqual(3, set.Elements.Count);
+            Assert.AreEqual("i1", set.Elements.ElementAt(0).Keys.Single());
+            Assert.AreEqual("i2", set.Elements.ElementAt(1).Keys.Single());
+            Assert.AreEqual("i3", set.Elements.ElementAt(2).Keys.Single());
+        }
+
+        [TestMethod]
+        public void CreateByEnumeration2()
+        {
+            var set = MemorySet.CreateByEnumeration("i", 20);
+            Assert.IsNotNull(set);
+            Assert.AreEqual(20, set.Elements.Count);
+            Assert.AreEqual("i01", set.Elements.ElementAt(0).Keys.Single());
+            Assert.AreEqual("i02", set.Elements.ElementAt(1).Keys.Single());
+            Assert.AreEqual("i03", set.Elements.ElementAt(2).Keys.Single());
+        }
+
+        [TestMethod]
+        public void CreateByEnumeration3()
+        {
+            var set = MemorySet.CreateByEnumeration("i", 20000);
+            Assert.IsNotNull(set);
+            Assert.AreEqual(20000, set.Elements.Count);
+            Assert.AreEqual("i00001", set.Elements.ElementAt(0).Keys.Single());
+            Assert.AreEqual("i00002", set.Elements.ElementAt(1).Keys.Single());
+            Assert.AreEqual("i00003", set.Elements.ElementAt(2).Keys.Single());
         }
     }
 }
