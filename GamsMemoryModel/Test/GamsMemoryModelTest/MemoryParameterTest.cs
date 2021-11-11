@@ -1,6 +1,4 @@
-﻿using GamsMemoryModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 
 namespace GamsMemoryModelTest
 {
@@ -31,11 +29,20 @@ namespace GamsMemoryModelTest
         }
 
         [TestMethod]
-        public void AddParams()
+        public void AddParamsDimension0()
+        {
+            var parameter = new MemoryParameter("a", 0);
+            parameter.AddRecord(3);
+            Assert.AreEqual(3, parameter.Records.Single().Value);
+        }
+
+        [TestMethod]
+        public void AddParamsDimension2()
         {
             var parameter = new MemoryParameter("IJ", 2);
             parameter.AddRecord(1, "i1", "j1");
             Assert.AreEqual(1, parameter.Records.Count);
+            Assert.AreEqual(1, parameter.Records.Single().Value);
         }
     }
 }

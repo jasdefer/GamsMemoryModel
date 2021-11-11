@@ -1,9 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GamsMemoryModel
+﻿namespace GamsMemoryModel
 {
     /// <summary>
     /// Represents a gams variable.

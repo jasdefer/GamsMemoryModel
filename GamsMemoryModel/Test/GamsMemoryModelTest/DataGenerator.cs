@@ -1,7 +1,4 @@
-﻿using GamsMemoryModel;
-using System.Linq;
-
-namespace GamsMemoryModelTest
+﻿namespace GamsMemoryModelTest
 {
     public class DataGenerator
     {

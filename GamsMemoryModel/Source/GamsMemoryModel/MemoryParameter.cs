@@ -1,9 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GamsMemoryModel
+﻿namespace GamsMemoryModel
 {
     /// <summary>
     /// Represents a gams parameter.
@@ -114,6 +109,11 @@ namespace GamsMemoryModel
         /// <param name="keys">The keys for this record.</param>
         public void AddRecord(double value, params string[] keys)
         {
+            if (keys is null)
+            {
+                throw new ArgumentNullException(nameof(keys));
+            }
+
             if (keys.Length != Dimension)
             {
                 throw new ArgumentException($"Cannot add a record with a dimension of {keys.Length} to a parameter with a dimension of {Dimension}.", nameof(keys));

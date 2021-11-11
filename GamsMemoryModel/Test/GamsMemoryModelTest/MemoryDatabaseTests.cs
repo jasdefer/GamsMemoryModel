@@ -1,7 +1,4 @@
-﻿using GamsMemoryModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 
 namespace GamsMemoryModelTest
 {

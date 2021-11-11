@@ -1,7 +1,4 @@
-﻿using GamsMemoryModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace GamsHelperTest.Model
+﻿namespace GamsHelperTest.Model
 {
     [TestClass]
     public class GamsKeyTests

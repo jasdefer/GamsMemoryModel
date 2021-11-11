@@ -1,8 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 
 namespace GamsMemoryModel
 {
@@ -108,6 +104,11 @@ namespace GamsMemoryModel
         /// <param name="keys">The set of keys that create this element.</param>
         public void AddElement(params string[] keys)
         {
+            if (keys is null)
+            {
+                throw new ArgumentNullException(nameof(keys));
+            }
+
             if (keys.Length != Dimension)
             {
                 throw new ArgumentException($"Cannot add a record with a dimension of {keys.Length} to a set with a dimension of {Dimension}.", nameof(keys));

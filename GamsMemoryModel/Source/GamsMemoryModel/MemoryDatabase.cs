@@ -1,8 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-
-namespace GamsMemoryModel
+﻿namespace GamsMemoryModel
 {
     /// <summary>
     /// Represents a GAMSDatabase.
