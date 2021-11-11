@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Authors>Justus Bonz</Authors>
+    <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <PackageProjectUrl>https://github.com/jasdefer/GamsMemoryModel</PackageProjectUrl>

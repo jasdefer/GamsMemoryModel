@@ -53,7 +53,7 @@ public class GamsKey : IEquatable<GamsKey>
     /// <param name="obj">The object to which this <see cref="GamsKey"/> is compared.</param>
     /// <returns>True, if all keys are equal. False otherwise.</returns>
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         return Equals(obj as GamsKey);
     }
@@ -63,7 +63,7 @@ public class GamsKey : IEquatable<GamsKey>
     /// </summary>
     /// <param name="other">The <see cref="GamsKey"/> to which this <see cref="GamsKey"/> is compared.</param>
     /// <returns>True, if all keys are equal. False otherwise.</returns>
-    public bool Equals(GamsKey other)
+    public bool Equals(GamsKey? other)
     {
         if (other is null ||
             other.Length != Length)

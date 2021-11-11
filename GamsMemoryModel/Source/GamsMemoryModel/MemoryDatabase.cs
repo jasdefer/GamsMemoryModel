@@ -13,9 +13,9 @@ public class MemoryDatabase
     /// <param name="parameters">The parameters in this database.</param>
     /// <param name="variables">The variables in this database.</param>
     public MemoryDatabase(string name,
-        IReadOnlyCollection<MemorySet> sets = null,
-        IReadOnlyCollection<MemoryParameter> parameters = null,
-        IReadOnlyCollection<MemoryVariable> variables = null)
+        IReadOnlyCollection<MemorySet>? sets = null,
+        IReadOnlyCollection<MemoryParameter>? parameters = null,
+        IReadOnlyCollection<MemoryVariable>? variables = null)
     {
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Parameters = parameters ?? Array.Empty<MemoryParameter>();
@@ -65,6 +65,10 @@ public class MemoryDatabase
             throw new ArgumentNullException(nameof(json));
         }
         var memoryDatabase = JsonConvert.DeserializeObject<MemoryDatabase>(json);
+        if(memoryDatabase == null)
+        {
+            throw new ArgumentException("Could not deserialize the input json string to a MemoryDatabase", nameof(json));
+        }
         return memoryDatabase;
     }
 }
