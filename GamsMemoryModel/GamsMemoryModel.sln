@@ -1,15 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{861BF12F-E614-46D2-B918-245FFF713C9F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{28975763-13C5-4707-ABBF-6391949FC55B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamsMemoryModel", "Source\GamsMemoryModel\GamsMemoryModel.csproj", "{BEE5C7D7-8468-4238-8D20-C5CA3F62A94D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GamsMemoryModel", "Source\GamsMemoryModel\GamsMemoryModel.csproj", "{BEE5C7D7-8468-4238-8D20-C5CA3F62A94D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamsMemoryModelTest", "Test\GamsMemoryModelTest\GamsMemoryModelTest.csproj", "{EB7196FC-19F5-46F1-B246-E6B339969970}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GamsMemoryModelTest", "Test\GamsMemoryModelTest\GamsMemoryModelTest.csproj", "{EB7196FC-19F5-46F1-B246-E6B339969970}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{437DB8AD-AEF4-4639-B7DF-8857A8582837}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
